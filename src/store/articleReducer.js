@@ -11,7 +11,7 @@ export const articleReducer = (state = initialState, action) => {
   }
 };
 
-const loadArticles = () => {
+export const loadArticles = () => {
   return {
     type: LOAD_ARTICLES,
     payload: articles

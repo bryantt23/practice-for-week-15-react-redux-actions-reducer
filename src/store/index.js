@@ -1,12 +1,14 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import fruitReducer from './fruitReducer';
+import articleReducer from './articleReducer';
 
 // `combineReducers` combines all the reducer functions into one big reducer
 // function, which is typically called `rootReducer`. This is the most important
 // part of this file. You will add your reducers here to work with your various
 // components.
 const rootReducer = combineReducers({
-  fruitState: fruitReducer
+  fruitState: fruitReducer,
+  articleState: articleReducer
 });
 
 // `enhancer` allows you to alter the store and add functionality such as the
@@ -28,14 +30,15 @@ let enhancer;
 if (process.env.NODE_ENV !== 'production') {
   const logger = require('redux-logger').default;
   const composeEnhancers =
-    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true }) : compose;
+    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true })
+      : compose;
   enhancer = composeEnhancers(applyMiddleware(logger));
 }
 
-// `createStore` creates a store object literal {} 
+// `createStore` creates a store object literal {}
 // `preloadedState`--not important for now--is mainly used for hydrating state
-// from the server. 
+// from the server.
 // For `enhancer`, see above.
 // `configureStore` is the variable you will use in your root index.js to give
 // the Redux store access to the full application.

@@ -1,5 +1,15 @@
 import articles from '../data/data.json';
 const LOAD_ARTICLES = 'article/loadArticles';
+const initialState = { entries: [], isLoading: true };
+
+export const articleReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOAD_ARTICLES:
+      return { ...state, entries: action.payload };
+    default:
+      return state;
+  }
+};
 
 const loadArticles = () => {
   return {
@@ -8,4 +18,4 @@ const loadArticles = () => {
   };
 };
 
-export default loadArticles;
+export default articleReducer;
